@@ -196,16 +196,7 @@ class JsonRPC
         $web->setBasicAuth($this->conf["user"], $this->conf["pass"]);
         $web->setData($query);
         $response    = $web->request($url);
-        $status_code = $response->getCode();
-        
-        if (isset(self::$exceptions[$status_code])) {
-            $error = $this->getResponseError($response, $status_code);
-            throw new self::$exceptions[$status_code](
-                $error["message"],
-                $error["code"]
-            );
-        }
-
+       
         return $response;
     }
 
