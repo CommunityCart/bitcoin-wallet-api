@@ -160,7 +160,7 @@ class JsonRPC
             "id"     => $this->getNonceValue()
         ];
         $response = $this->exec(json_encode($request));
-        $response = json_decode($response->getBody(), true);
+        $response = json_decode($response['body'], true);
         
         if (!$response) {
             throw new Exceptions\JsonException(
